@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICE FOR YOU - Apparel & Jewelry</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.bunny.net/css?family=cinzel:600|inter:400,500,600,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="container nav-container">
+            <a href="#" class="logo">ICE FOR YOU</a>
+            <div class="main-nav">
+                <a href="#" class="nav-link">Apparel</a>
+                <a href="#" class="nav-link">Jewelry</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+            </div>
+            <div class="header-icons">
+                <button class="icon-button"><i data-feather="search"></i></button>
+                <button class="icon-button"><i data-feather="user"></i></button>
+                <button class="icon-button"><i data-feather="shopping-cart"></i></button>
+                <button class="icon-button mobile-menu-trigger" id="mobile-menu-button">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+        </nav>
+        <div class="mobile-menu hidden" id="mobile-menu">
+            <a href="#" class="mobile-nav-link">Apparel</a>
+            <a href="#" class="mobile-nav-link">Jewelry</a>
+            <a href="#" class="mobile-nav-link">About</a>
+            <a href="#" class="mobile-nav-link">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                </div>
+        </section>
+
+        <section class="tagline-section">
+            <div class="container">
+                <p class="tagline">To take the complex real world and simplify it</p>
+            </div>
+        </section>
+
+        <section class="section section-light">
+            <div class="container">
+                <h2 class="section-title">Featured Products</h2>
+                <div class="product-grid">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Our Collections</h2>
+                <div class="collections-grid">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer-main">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title logo-font">ICE FOR YOU</h3>
+                    <p class="footer-text">Simplifying the world, one piece at a time.</p>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Home</a></li>
+                        <li><a href="#" class="footer-link">Shop</a></li>
+                        <li><a href="#" class="footer-link">About Us</a></li>
+                        <li><a href="#" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-link"><i data-feather="facebook"></i></a>
+                        <a href="#" class="social-link"><i data-feather="instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p class="footer-text">Subscribe for updates and special offers.</p>
+                    <form>
+                        <input type="email" placeholder="Your email" class="newsletter-input">
+                        <button class="btn btn-primary newsletter-btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ICE FOR YOU. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script> 
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
