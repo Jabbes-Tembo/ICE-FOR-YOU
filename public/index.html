@@ -3,108 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICE FOR YOU - Apparel & Jewelry</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.bunny.net/css?family=cinzel:600|inter:400,500,600,700&display=swap" rel="stylesheet">
+    <title>ICE FOR YOU | Apparel & Jewelry</title>
+    
+    <!-- External Libs -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#C5A059',
+                            black: '#111111',
+                            sky: '#0ea5e9' 
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="text-gray-900 parallax-bg min-h-screen relative">
 
-    <header class="site-header">
-        <nav class="container nav-container">
-            <a href="#" class="logo">ICE FOR YOU</a>
-            <div class="main-nav">
-                <a href="#" class="nav-link">Apparel</a>
-                <a href="#" class="nav-link">Jewelry</a>
-                <a href="#" class="nav-link">About</a>
-                <a href="#" class="nav-link">Contact</a>
-            </div>
-            <div class="header-icons">
-                <button class="icon-button"><i data-feather="search"></i></button>
-                <button class="icon-button"><i data-feather="user"></i></button>
-                <button class="icon-button"><i data-feather="shopping-cart"></i></button>
-                <button class="icon-button mobile-menu-trigger" id="mobile-menu-button">
-                    <i data-feather="menu"></i>
+    <!-- SPLASH SCREEN -->
+    <div id="splash-screen" class="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center transition-opacity duration-700 ease-out">
+        <div class="text-center">
+            <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter mb-4 animate-pulse-slow">ICE FOR YOU</h1>
+            <p class="text-gray-500 text-xs md:text-sm font-bold uppercase tracking-[0.3em] animate-pulse">powered by GreenRoots Creatives</p>
+        </div>
+    </div>
+
+    <!-- Overlay Background -->
+    <div class="fixed inset-0 bg-white/30 z-0 pointer-events-none"></div>
+
+    <!-- Navigation -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300 glass-panel shadow-sm border-none" id="main-header">
+        <div class="w-full px-6 md:px-12 h-20 flex justify-between items-center">
+            
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-toggle" class="md:hidden text-gray-800 hover:text-brand-sky transition">
+                <i data-feather="menu"></i>
+            </button>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#/collection/Apparel" class="text-sm uppercase tracking-widest font-bold hover:text-brand-sky transition">Apparel</a>
+                <a href="#/collection/Jewelry" class="text-sm uppercase tracking-widest font-bold hover:text-brand-sky transition">Jewelry</a>
+            </nav>
+
+            <!-- Logo -->
+            <a href="#/" class="text-2xl font-black tracking-tighter text-brand-black z-50 absolute left-1/2 transform -translate-x-1/2 md:static md:transform-none md:text-center cursor-pointer hover:text-gray-600 transition duration-300">
+                ICE FOR YOU
+            </a>
+
+            <!-- Icons -->
+            <div class="flex items-center space-x-6">
+                <button id="search-toggle" class="text-gray-800 hover:text-brand-sky transition">
+                    <i data-feather="search" class="w-5 h-5"></i>
+                </button>
+                <button id="cart-toggle" class="text-gray-800 hover:text-brand-sky transition relative">
+                    <i data-feather="shopping-bag" class="w-5 h-5"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-brand-sky text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
                 </button>
             </div>
-        </nav>
-        <div class="mobile-menu hidden" id="mobile-menu">
-            <a href="#" class="mobile-nav-link">Apparel</a>
-            <a href="#" class="mobile-nav-link">Jewelry</a>
-            <a href="#" class="mobile-nav-link">About</a>
-            <a href="#" class="mobile-nav-link">Contact</a>
         </div>
     </header>
 
-    <main>
-        <section class="hero-section">
-            <div class="hero-content">
-                </div>
-        </section>
-
-        <section class="tagline-section">
-            <div class="container">
-                <p class="tagline">To take the complex real world and simplify it</p>
-            </div>
-        </section>
-
-        <section class="section section-light">
-            <div class="container">
-                <h2 class="section-title">Featured Products</h2>
-                <div class="product-grid">
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">Our Collections</h2>
-                <div class="collections-grid">
-                </div>
-            </div>
-        </section>
+    <!-- Main Content Area -->
+    <main id="app" class="relative z-10 min-h-screen flex flex-col">
+        <!-- Views injected here by Router -->
     </main>
 
-    <footer class="site-footer-main">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3 class="footer-title logo-font">ICE FOR YOU</h3>
-                    <p class="footer-text">Simplifying the world, one piece at a time.</p>
+    <!-- FOOTER -->
+    <footer class="relative z-10 bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-800 pb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <h3 class="text-xl font-bold mb-6 tracking-tight">ICE FOR YOU</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Simplifying the complex real world.</p>
                 </div>
-                <div class="footer-col">
-                    <h3 class="footer-title">Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#" class="footer-link">Home</a></li>
-                        <li><a href="#" class="footer-link">Shop</a></li>
-                        <li><a href="#" class="footer-link">About Us</a></li>
-                        <li><a href="#" class="footer-link">Contact</a></li>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest mb-6 text-gray-500">Shop</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li><a href="#/collection/Apparel" class="hover:text-brand-sky transition">Apparel</a></li>
+                        <li><a href="#/collection/Jewelry" class="hover:text-brand-sky transition">Jewelry</a></li>
+                        <li><a href="#/collection/All" class="hover:text-brand-sky transition">All Products</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h3 class="footer-title">Follow Us</h3>
-                    <div class="social-icons">
-                        <a href="#" class="social-link"><i data-feather="facebook"></i></a>
-                        <a href="#" class="social-link"><i data-feather="instagram"></i></a>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest mb-6 text-gray-500">Help</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-brand-sky transition">Shipping & Returns</a></li>
+                        <li><a href="#" class="hover:text-brand-sky transition">Size Guide</a></li>
+                        <li><a href="#" class="hover:text-brand-sky transition">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest mb-6 text-gray-500">Stay Updated</h4>
+                    <div class="flex flex-col space-y-3">
+                        <input type="email" placeholder="Email Address" class="bg-gray-800 border-none text-white px-4 py-3 text-sm focus:ring-1 focus:ring-brand-sky w-full rounded-sm placeholder-gray-500">
+                        <button class="bg-brand-sky text-white px-4 py-3 text-sm font-bold uppercase tracking-widest hover:bg-sky-600 transition rounded-sm">Subscribe</button>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h3 class="footer-title">Newsletter</h3>
-                    <p class="footer-text">Subscribe for updates and special offers.</p>
-                    <form>
-                        <input type="email" placeholder="Your email" class="newsletter-input">
-                        <button class="btn btn-primary newsletter-btn">Subscribe</button>
-                    </form>
-                </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 ICE FOR YOU. All Rights Reserved.</p>
+            <div class="pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2025 ICE FOR YOU. Lusaka, Zambia.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition"><i data-feather="instagram" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-white transition"><i data-feather="facebook" class="w-4 h-4"></i></a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script> 
-    <script type="module" src="firebase-config.js"></script>
-    <script type="module" src="main.js"></script>
+    <!-- DRAWERS & MODALS -->
+    
+    <!-- Mobile Menu Drawer -->
+    <div id="menu-drawer" class="drawer fixed inset-0 z-[60] transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="drawer-backdrop absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <div class="absolute left-0 top-0 h-full w-[80%] max-w-sm bg-white shadow-2xl flex flex-col">
+            <div class="p-6 flex justify-between items-center border-b border-gray-100">
+                <span class="font-bold text-lg tracking-widest text-gray-900">MENU</span>
+                <button class="close-drawer"><i data-feather="x"></i></button>
+            </div>
+            <nav class="flex-1 p-6 flex flex-col space-y-6 text-xl font-medium text-gray-800">
+                <a href="#/" class="block hover:text-brand-sky drawer-link">Home</a>
+                <a href="#/collection/Apparel" class="block hover:text-brand-sky drawer-link">Apparel</a>
+                <a href="#/collection/Jewelry" class="block hover:text-brand-sky drawer-link">Jewelry</a>
+                <a href="#/collection/All" class="block hover:text-brand-sky drawer-link">Shop All</a>
+            </nav>
+            <div class="p-6 bg-gray-50 border-t border-gray-100">
+                <p class="text-sm text-gray-500">God Bless Zambia Collection Available Now.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div id="cart-drawer" class="drawer fixed inset-0 z-[60] transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="drawer-backdrop absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <div class="absolute right-0 top-0 h-full w-full md:w-[450px] bg-white shadow-2xl flex flex-col">
+            <div class="p-6 flex justify-between items-center border-b border-gray-100">
+                <span class="font-bold text-lg tracking-widest text-gray-900">SHOPPING CART</span>
+                <button class="close-drawer"><i data-feather="x"></i></button>
+            </div>
+            <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-6">
+                <!-- JS Injected -->
+            </div>
+            <div class="p-6 bg-gray-50 border-t border-gray-100 space-y-4">
+                <div class="flex justify-between text-lg font-bold text-gray-900">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">K0.00</span>
+                </div>
+                <p class="text-xs text-gray-500 text-center">Shipping & taxes calculated at checkout.</p>
+                <button class="w-full bg-black text-white py-4 font-bold uppercase tracking-widest hover:bg-gray-800 transition rounded-sm shadow-lg">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div id="search-overlay" class="fixed inset-0 z-[60] bg-white/95 backdrop-blur-xl opacity-0 pointer-events-none transition-opacity duration-300 flex flex-col items-center pt-32">
+        <button id="search-close" class="absolute top-8 right-8 p-2 hover:bg-gray-100 rounded-full transition">
+            <i data-feather="x" class="w-8 h-8 text-gray-500"></i>
+        </button>
+        <div class="w-full max-w-3xl px-6">
+            <input type="text" id="search-input" placeholder="SEARCH PRODUCTS..." class="w-full text-3xl md:text-5xl font-bold bg-transparent border-b-2 border-gray-200 focus:border-black outline-none pb-4 text-center uppercase placeholder-gray-300 text-gray-900">
+        </div>
+        <div id="search-results" class="w-full max-w-4xl mt-12 px-6 grid grid-cols-2 md:grid-cols-4 gap-6 overflow-y-auto max-h-[60vh]"></div>
+    </div>
+
+    <!-- Main Logic -->
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
