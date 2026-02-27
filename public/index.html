@@ -35,6 +35,9 @@
             }
         }
     </script>
+
+    <!-- Add EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body class="text-gray-900 parallax-bg min-h-screen relative">
 
@@ -93,7 +96,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-800 pb-12">
                 <div class="col-span-1 md:col-span-1">
                     <h3 class="text-xl font-bold mb-6 tracking-tight">ICE FOR YOU</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Simplifying the complex real world.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">To take the complex real world and simplify it.</p>
                 </div>
                 <div>
                     <h4 class="text-sm font-bold uppercase tracking-widest mb-6 text-gray-500">Shop</h4>
@@ -106,23 +109,26 @@
                 <div>
                     <h4 class="text-sm font-bold uppercase tracking-widest mb-6 text-gray-500">Help</h4>
                     <ul class="space-y-3 text-sm text-gray-300">
-                        <li><a href="#" class="hover:text-brand-sky transition">Shipping & Returns</a></li>
-                        <li><a href="#" class="hover:text-brand-sky transition">Size Guide</a></li>
-                        <li><a href="#" class="hover:text-brand-sky transition">Contact Us</a></li>
+                        <li><a href="#/delivery" class="hover:text-brand-sky transition">Delivery & Returns</a></li>
+                        <li><a href="#/conditions" class="hover:text-brand-sky transition">Conditions of Service</a></li>
+                        <li><a href="#/contact" class="hover:text-brand-sky transition">Contact Us</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-sm font-bold uppercase tracking-widest mb-6 text-gray-500">Stay Updated</h4>
-                    <div class="flex flex-col space-y-3">
-                        <input type="email" placeholder="Email Address" class="bg-gray-800 border-none text-white px-4 py-3 text-sm focus:ring-1 focus:ring-brand-sky w-full rounded-sm placeholder-gray-500">
-                        <button class="bg-brand-sky text-white px-4 py-3 text-sm font-bold uppercase tracking-widest hover:bg-sky-600 transition rounded-sm">Subscribe</button>
-                    </div>
+                    <!-- WRAPPED IN A FORM FOR EMAILJS -->
+                    <form id="subscribe-form" class="flex flex-col space-y-3">
+                        <input type="text" name="subscriber_name" required placeholder="Your Name" class="bg-gray-800 border-none text-white px-4 py-3 text-sm focus:ring-1 focus:ring-brand-sky w-full rounded-sm placeholder-gray-500">
+                        <input type="email" name="subscriber_email" required placeholder="Email Address" class="bg-gray-800 border-none text-white px-4 py-3 text-sm focus:ring-1 focus:ring-brand-sky w-full rounded-sm placeholder-gray-500">
+                        <button type="submit" id="subscribe-btn" class="bg-brand-sky text-white px-4 py-3 text-sm font-bold uppercase tracking-widest hover:bg-sky-600 transition rounded-sm">Subscribe</button>
+                    </form>
                 </div>
             </div>
             <div class="pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-                <p>&copy; 2025 ICE FOR YOU. Lusaka, Zambia.</p>
+                <p>&copy; 2026 ICE FOR YOU. Lusaka, Zambia.</p>
                 <div class="flex space-x-4 mt-4 md:mt-0">
                     <a href="#" class="hover:text-white transition"><i data-feather="instagram" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-white transition"><i data-feather="twitter" class="w-4 h-4"></i></a>
                     <a href="#" class="hover:text-white transition"><i data-feather="facebook" class="w-4 h-4"></i></a>
                 </div>
             </div>
@@ -144,9 +150,10 @@
                 <a href="#/collection/Apparel" class="block hover:text-brand-sky drawer-link">Apparel</a>
                 <a href="#/collection/Jewelry" class="block hover:text-brand-sky drawer-link">Jewelry</a>
                 <a href="#/collection/All" class="block hover:text-brand-sky drawer-link">Shop All</a>
+                <a href="#/contact" class="block hover:text-brand-sky drawer-link">Contact Us</a>
             </nav>
             <div class="p-6 bg-gray-50 border-t border-gray-100">
-                <p class="text-sm text-gray-500">God Bless Zambia Collection Available Now.</p>
+                <p class="text-sm text-gray-500">GreenRoots X IceForYou Collection Available Now.</p>
             </div>
         </div>
     </div>

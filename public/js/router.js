@@ -1,10 +1,14 @@
-import { renderHome, renderCollection, renderProduct } from './views.js';
+import { renderHome, renderCollection, renderProduct, renderPlayer, renderDeliveryReturns, renderConditions, renderContactUs } from './views.js';
 
 const routes = {
     '': renderHome,
     '/': renderHome,
     'collection': renderCollection,
-    'product': renderProduct
+    'product': renderProduct,
+    'player': renderPlayer,
+    'delivery': renderDeliveryReturns,
+    'conditions': renderConditions,
+    'contact': renderContactUs
 };
 
 export function initRouter(appElement) {

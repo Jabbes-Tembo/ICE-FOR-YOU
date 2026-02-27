@@ -29,7 +29,7 @@ function toggleSearch() {
     }
 }
 
-// --- Setup Event Listeners ---
+// --- Setup Global Events (Including Subscribe Form) ---
 function setupGlobalEvents() {
     document.getElementById('menu-toggle')?.addEventListener('click', () => toggleDrawer('menu-drawer'));
     document.getElementById('cart-toggle')?.addEventListener('click', () => toggleDrawer('cart-drawer'));
@@ -47,6 +47,54 @@ function setupGlobalEvents() {
         link.addEventListener('click', () => toggleDrawer('menu-drawer'));
     });
 
+    // Handle Newsletter Subscription
+    const subscribeForm = document.getElementById('subscribe-form');
+    if (subscribeForm) {
+        subscribeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('subscribe-btn');
+            const nameInput = this.querySelector('input[name="subscriber_name"]').value;
+            const emailInput = this.querySelector('input[name="subscriber_email"]').value;
+            
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Subscribing...';
+            btn.disabled = true;
+
+            if(typeof emailjs !== 'undefined') {
+                // We use .send() instead of .sendForm() to perfectly map the {{name}} and {{email}} template vars
+                // REPLACE YOUR_SERVICE_ID and YOUR_PUBLIC_KEY
+                emailjs.send('service_qoq9vy3', 'template_tw74zop', {
+                    name: nameInput,
+                    email: emailInput
+                }, '2pRB_WKcxo0H26KzK')
+                    .then(() => {
+                        btn.innerHTML = 'Subscribed!';
+                        btn.classList.replace('bg-brand-sky', 'bg-green-600');
+                        subscribeForm.reset();
+                        setTimeout(() => {
+                            btn.innerHTML = originalText;
+                            btn.classList.replace('bg-green-600', 'bg-brand-sky');
+                            btn.disabled = false;
+                        }, 3000);
+                    }, (error) => {
+                        btn.innerHTML = 'Error';
+                        btn.classList.replace('bg-brand-sky', 'bg-red-600');
+                        console.error('EmailJS Subscribe Error:', error);
+                        setTimeout(() => {
+                            btn.innerHTML = originalText;
+                            btn.classList.replace('bg-red-600', 'bg-brand-sky');
+                            btn.disabled = false;
+                        }, 3000);
+                    });
+            } else {
+                alert("EmailJS SDK not loaded.");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        });
+    }
+
+    // Search input handler
     document.getElementById('search-input')?.addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase();
         const resultsContainer = document.getElementById('search-results');
@@ -87,9 +135,7 @@ window.addEventListener('load', async () => {
     // 1. Remove Splash Screen with fade effect
     const splash = document.getElementById('splash-screen');
     if (splash) {
-        // Add opacity-0 to trigger transition
         splash.classList.add('opacity-0', 'pointer-events-none');
-        // Remove from DOM after transition completes (700ms matches css duration)
         setTimeout(() => {
             splash.remove();
         }, 800);
